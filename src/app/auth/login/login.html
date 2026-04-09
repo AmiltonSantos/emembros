@@ -23,6 +23,7 @@
           pInputText
           type="text"
           placeholder="E-mail ou Usuário"
+          [(ngModel)]="usuario"
         />
       </div>
 
@@ -34,6 +35,7 @@
           pInputText
           [type]="passwordVisible ? 'text' : 'password'"
           placeholder="Senha"
+          [(ngModel)]="senha"
         />
 
         <i
@@ -48,6 +50,7 @@
         pButton
         label="Entrar"
         class="btn-login"
+        (click)="login()"
       ></button>
 
     </div>
