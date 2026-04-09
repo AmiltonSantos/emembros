@@ -1,124 +1,87 @@
-<div class="flex h-screen bg-gray-100">
+<header class="topbar">
 
-  <!-- SIDEBAR -->
-  <aside class="w-64 bg-[#0f3c5f] text-white flex flex-col">
-
-    <div class="p-6 text-center border-b border-white/10">
-      <img src="imagens/logo/logo-emembros.png" class="w-40 mx-auto" />
-    </div>
-
-    <nav class="flex-1 p-4 space-y-2">
-
-      <a class="menu-item">
-        <i class="pi pi-home"></i>
-        Dashboard
-      </a>
-
-      <a class="menu-item">
-        <i class="pi pi-users"></i>
-        Pessoas
-      </a>
-
-      <a class="menu-item">
-        <i class="pi pi-wallet"></i>
-        Financeiro
-      </a>
-
-      <a class="menu-item">
-        <i class="pi pi-calendar"></i>
-        Agenda
-      </a>
-
-      <a class="menu-item">
-        <i class="pi pi-building"></i>
-        Congregações
-      </a>
-
-    </nav>
-
-  </aside>
-
-  <!-- CONTEÚDO -->
-  <div class="flex-1 flex flex-col">
-
-    <!-- TOPBAR -->
-    <header class="h-16 bg-white shadow flex items-center justify-between px-6">
-
-      <h1 class="font-semibold text-gray-700">
-        Dashboard
-      </h1>
-
-      <div class="flex items-center gap-4">
-
-        <i class="pi pi-bell text-xl cursor-pointer"></i>
-
-        <div class="flex items-center gap-2 cursor-pointer">
-          <img
-            src="https://i.pravatar.cc/40"
-            class="w-8 h-8 rounded-full"
-          />
-          <span class="text-sm font-medium">Admin</span>
-        </div>
-
-      </div>
-
-    </header>
-
-    <!-- CONTEÚDO PRINCIPAL -->
-    <main class="p-6 space-y-6">
-
-      <!-- CARDS -->
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-
-        <div class="card">
-          <h3>Membros</h3>
-          <p>1.245</p>
-        </div>
-
-        <div class="card">
-          <h3>Visitantes</h3>
-          <p>320</p>
-        </div>
-
-        <div class="card">
-          <h3>Dízimos</h3>
-          <p>R$ 12.450</p>
-        </div>
-
-        <div class="card">
-          <h3>Eventos</h3>
-          <p>8</p>
-        </div>
-
-      </div>
-
-      <!-- TABELA -->
-      <p-table [value]="membros" class="shadow rounded-lg overflow-hidden">
-
-        <ng-template pTemplate="header">
-          <tr>
-            <th>Nome</th>
-            <th>Email</th>
-            <th>Status</th>
-          </tr>
-        </ng-template>
-
-        <ng-template pTemplate="body" let-membro>
-          <tr>
-            <td>{{ membro.nome }}</td>
-            <td>{{ membro.email }}</td>
-            <td>
-              <span class="status">
-                {{ membro.status }}
-              </span>
-            </td>
-          </tr>
-        </ng-template>
-
-      </p-table>
-
-    </main>
-
+  <!-- LOGO -->
+  <div class="logo">
+    <img src="imagens/logo/logo-emembros.png" />
   </div>
 
-</div>
+  <!-- MENU -->
+  <nav class="menu">
+
+    <a class="menu-item active">
+      <i class="pi pi-home"></i>
+      <span>Visão geral</span>
+    </a>
+
+    <div class="menu-item dropdown">
+      <i class="pi pi-users"></i>
+      <span>Pessoas</span>
+      <i class="pi pi-angle-down"></i>
+
+      <div class="dropdown-menu">
+        <a>Ver todos</a>
+        <a>Adicionar pessoa</a>
+        <a>Campos adicionais</a>
+        <a>Categorias</a>
+        <a>Função</a>
+        <a>Credencial</a>
+        <a>Aniversariantes</a>
+        <a>Relatórios</a>
+        <a>Importar</a>
+        <a>Exportar</a>
+      </div>
+    </div>
+
+    <a class="menu-item">
+      <i class="pi pi-sitemap"></i>
+      <span>Departamentos</span>
+    </a>
+
+    <a class="menu-item">
+      <i class="pi pi-building"></i>
+      <span>Congregação</span>
+    </a>
+
+    <a class="menu-item">
+      <i class="pi pi-book"></i>
+      <span>Ensino</span>
+    </a>
+
+    <a class="menu-item">
+      <i class="pi pi-wallet"></i>
+      <span>Financeiro</span>
+    </a>
+
+    <a class="menu-item">
+      <i class="pi pi-box"></i>
+      <span>Patrimônio</span>
+    </a>
+
+    <a class="menu-item">
+      <i class="pi pi-calendar"></i>
+      <span>Agenda</span>
+    </a>
+
+    <a class="menu-item">
+      <i class="pi pi-image"></i>
+      <span>Mídias</span>
+    </a>
+
+    <a class="menu-item">
+      <i class="pi pi-question-circle"></i>
+      <span>Ajuda</span>
+    </a>
+
+  </nav>
+
+  <!-- USER -->
+  <div class="user">
+    <i class="pi pi-bell"></i>
+
+    <div class="avatar">
+      <img src="https://i.pravatar.cc/40" />
+      <span>Admin</span>
+    </div>
+  </div>
+
+</header>
