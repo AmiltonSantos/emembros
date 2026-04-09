@@ -1,100 +1,424 @@
+/* Topbar Styles */
 .topbar {
-  height: 60px;
-  background: #fff;
-  display: flex;
-  align-items: center;
-  padding: 0 20px;
-  border-bottom: 1px solid #e5e7eb;
-  gap: 30px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    border-bottom: 1px solid #e5e7eb;
+    gap: 20px;
+    z-index: 100;
 }
 
-/* LOGO */
+/* Botão Menu Sanduíche - SEMPRE VISÍVEL */
+.mobile-menu-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 8px;
+    transition: background 0.2s ease;
+    flex-shrink: 0;
+}
+
+.mobile-menu-btn i {
+    font-size: 22px;
+    color: #6b7280;
+}
+
+.mobile-menu-btn:hover {
+    background: #f3f4f6;
+}
+
+.mobile-menu-btn:hover i {
+    color: #111827;
+}
+
+/* Logo */
+.logo {
+    flex-shrink: 0;
+}
+
 .logo img {
-  height: 32px;
+    height: 32px;
+    width: auto;
 }
 
-/* MENU */
-.menu {
-  display: flex;
-  align-items: center;
-  gap: 18px; /* 🔥 controle perfeito do espaçamento */
-  flex: 1;
+/* Menu Desktop */
+.menu-desktop {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    flex: 1;
 }
 
-/* ITEM */
+/* Menu Item */
 .menu-item {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 14px;
-  color: #555;
-  padding: 8px 10px;
-  border-radius: 8px;
-  cursor: pointer;
-  position: relative;
-  transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    color: #6b7280;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    text-decoration: none;
 }
 
-/* HOVER */
 .menu-item:hover {
-  background: #f3f4f6;
-  color: #111;
+    background: #f3f4f6;
+    color: #111827;
 }
 
-/* ATIVO */
 .menu-item.active {
-  color: #2563eb;
-  font-weight: 500;
+    color: #3b82f6;
+    font-weight: 500;
+    background: #eff6ff;
 }
 
-/* DROPDOWN */
+/* Dropdown */
+.dropdown {
+    position: relative;
+}
+
 .dropdown-menu {
-  position: absolute;
-  top: 42px;
-  left: 0;
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-  padding: 8px 0;
-  min-width: 200px;
-  display: none;
-  z-index: 100;
+    position: absolute;
+    top: 42px;
+    left: 0;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    padding: 8px 0;
+    min-width: 200px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.2s ease;
+    z-index: 1000;
 }
 
-/* ITEM DROPDOWN */
+.dropdown-menu.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
 .dropdown-menu a {
-  display: block;
-  padding: 10px 14px;
-  font-size: 13px;
-  color: #444;
-  cursor: pointer;
+    display: block;
+    padding: 10px 14px;
+    font-size: 13px;
+    color: #444;
+    cursor: pointer;
+    transition: background 0.2s ease;
 }
 
 .dropdown-menu a:hover {
-  background: #f5f5f5;
+    background: #f5f5f5;
 }
 
-/* MOSTRAR DROPDOWN */
-.dropdown:hover .dropdown-menu {
-  display: block;
+/* User Area */
+.user-area {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-shrink: 0;
 }
 
-/* USER */
-.user {
-  display: flex;
-  align-items: center;
-  gap: 15px;
+.user-area i {
+    font-size: 20px;
+    color: #6b7280;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.user-area i:hover {
+    color: #111827;
 }
 
 .avatar {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
 }
 
-.avatar img {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
+.avatar span {
+    font-size: 14px;
+    color: #374151;
+    font-weight: 500;
+}
+
+/* Mobile Drawer Styles */
+::ng-deep .mobile-drawer {
+    width: 280px !important;
+}
+
+::ng-deep .mobile-drawer .p-drawer-header {
+    display: none;
+}
+
+.mobile-menu-content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background: #ffffff;
+}
+
+.mobile-logo {
+    padding: 20px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.mobile-logo img {
+    height: 32px;
+    width: auto;
+}
+
+.mobile-menu-items {
+    flex: 1;
+    overflow-y: auto;
+    padding: 12px 0;
+}
+
+/* Mobile Menu Links */
+.mobile-menu-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 20px;
+    color: #374151;
+    text-decoration: none;
+    transition: background 0.2s ease;
+    cursor: pointer;
+}
+
+.mobile-menu-link:hover {
+    background: #f3f4f6;
+}
+
+.mobile-menu-link i {
+    width: 20px;
+    font-size: 18px;
+    color: #3b82f6;
+}
+
+.mobile-menu-link span {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* Mobile Dropdown */
+.mobile-dropdown {
+    border-bottom: 1px solid #f3f4f6;
+}
+
+.mobile-dropdown-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 20px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.mobile-dropdown-header:hover {
+    background: #f9fafb;
+}
+
+.mobile-dropdown-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.mobile-dropdown-title i {
+    width: 20px;
+    font-size: 18px;
+    color: #3b82f6;
+}
+
+.mobile-dropdown-title span {
+    font-size: 14px;
+    font-weight: 500;
+    color: #374151;
+}
+
+.mobile-dropdown-header i.pi-angle-down {
+    font-size: 14px;
+    color: #9ca3af;
+    transition: transform 0.3s ease;
+}
+
+.mobile-dropdown-header i.pi-angle-down.rotated {
+    transform: rotate(180deg);
+}
+
+.mobile-dropdown-menu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    background: #f9fafb;
+}
+
+.mobile-dropdown-menu.show {
+    max-height: 500px;
+}
+
+.mobile-dropdown-menu a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 20px 10px 52px;
+    color: #6b7280;
+    text-decoration: none;
+    transition: background 0.2s ease;
+    cursor: pointer;
+}
+
+.mobile-dropdown-menu a:hover {
+    background: #f3f4f6;
+    color: #374151;
+}
+
+.mobile-dropdown-menu a i {
+    width: 16px;
+    font-size: 14px;
+}
+
+.mobile-dropdown-menu a span {
+    font-size: 13px;
+}
+
+/* Main Content */
+.main-content {
+    margin-top: 60px;
+    padding: 20px;
+    background: #f9fafb;
+    min-height: calc(100vh - 60px);
+}
+
+.content-wrapper {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Desktop: Botão sanduíche visível, mas menu desktop também */
+@media (min-width: 1025px) {
+    /* Botão sanduíche fica visível sempre */
+    .mobile-menu-btn {
+        display: flex;
+    }
+    
+    /* Menu desktop continua normalmente */
+    .menu-desktop {
+        display: flex;
+    }
+}
+
+/* Tablet e Mobile: Menu desktop escondido */
+@media (max-width: 1024px) {
+    .menu-desktop {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .topbar {
+        padding: 0 16px;
+        gap: 15px;
+    }
+    
+    .logo img {
+        height: 28px;
+    }
+    
+    .user-area {
+        gap: 15px;
+    }
+    
+    .user-area i {
+        font-size: 18px;
+    }
+    
+    .avatar span {
+        display: none;
+    }
+    
+    .main-content {
+        padding: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .topbar {
+        padding: 0 12px;
+        gap: 12px;
+    }
+    
+    .mobile-menu-btn i {
+        font-size: 20px;
+    }
+    
+    .logo img {
+        height: 24px;
+    }
+    
+    .main-content {
+        padding: 12px;
+    }
+}
+
+/* Scrollbar personalizada */
+.mobile-menu-items::-webkit-scrollbar {
+    width: 4px;
+}
+
+.mobile-menu-items::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.mobile-menu-items::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 4px;
+}
+
+.mobile-menu-items::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+/* Animações */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.mobile-menu-link, .mobile-dropdown {
+    animation: slideIn 0.3s ease forwards;
+}
+
+/* Melhorias de toque para mobile */
+@media (max-width: 768px) {
+    .menu-item,
+    .dropdown-menu a,
+    .mobile-menu-link,
+    .mobile-dropdown-header,
+    .mobile-menu-btn {
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+    }
 }
