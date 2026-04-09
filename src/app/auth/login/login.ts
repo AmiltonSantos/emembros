@@ -14,4 +14,13 @@ import { ButtonModule } from 'primeng/button';
   templateUrl: './login.html',
   styleUrls: ['./login.css']
 })
-export class Login {}
+export class Login {
+
+  // 👁️ controle de visibilidade da senha
+  passwordVisible = false;
+
+  togglePassword() {
+    this.passwordVisible = !this.passwordVisible;
+  }
+
+}

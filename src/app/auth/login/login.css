@@ -1,0 +1,173 @@
+/* FUNDO */
+.login-bg {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #0f3c5f, #1e6fa3);
+  overflow: hidden;
+  position: relative;
+}
+
+/* PARTÍCULAS MAIS SUAVES */
+.particles::before,
+.particles::after {
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.12) 2px, transparent 2px);
+  background-size: 70px 70px;
+  animation: moveParticles 40s linear infinite;
+}
+
+.particles::after {
+  animation-duration: 80s;
+  opacity: 0.4;
+}
+
+@keyframes moveParticles {
+  from {
+    transform: translate(0, 0);
+  }
+  to {
+    transform: translate(-250px, -250px);
+  }
+}
+
+/* CARD */
+.login-card {
+  width: 100%;
+  max-width: 420px;
+  padding: 40px 30px;
+  border-radius: 20px;
+
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(25px);
+
+  box-shadow: 
+    0 20px 40px rgba(0,0,0,0.25),
+    inset 0 0 0 1px rgba(255,255,255,0.1);
+
+  text-align: center;
+  color: #fff;
+}
+
+/* LOGO */
+.logo {
+  width: 350px;
+  margin-bottom: 10px;
+}
+
+/* SUBTITLE */
+.subtitle {
+  font-size: 14px;
+  margin-bottom: 25px;
+  opacity: 0.85;
+}
+
+/* FORM */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* INPUT GROUP */
+.input-group {
+  position: relative;
+  width: 100%;
+}
+
+/* INPUT */
+.input-group input {
+  width: 100%;
+  padding: 12px 42px;
+  border-radius: 12px;
+  border: none;
+  outline: none;
+
+  background: rgba(255,255,255,0.9);
+  color: #333;
+
+  transition: all 0.25s ease;
+}
+
+/* FOCUS MAIS BONITO */
+.input-group input:focus {
+  box-shadow: 
+    0 0 0 2px rgba(45,161,215,0.6),
+    0 5px 15px rgba(0,0,0,0.15);
+}
+
+/* ÍCONES */
+.icon-left {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #888;
+  font-size: 14px;
+}
+
+.icon-right {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #888;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+.icon-right:hover {
+  color: #000;
+}
+
+/* BOTÃO */
+.btn-login {
+  margin-top: 10px;
+  width: 100%;
+  height: 48px;
+  border-radius: 12px;
+  font-weight: bold;
+  font-size: 15px;
+
+  background: linear-gradient(90deg, #1e6fa3, #2da1d7);
+  border: none;
+
+  transition: all 0.3s ease;
+}
+
+/* HOVER */
+.btn-login:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+}
+
+/* ACTIVE */
+.btn-login:active {
+  transform: scale(0.98);
+}
+
+/* LINKS */
+.links {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.links a {
+  font-size: 13px;
+  color: #fff;
+  cursor: pointer;
+  opacity: 0.75;
+  transition: 0.2s;
+}
+
+.links a:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
