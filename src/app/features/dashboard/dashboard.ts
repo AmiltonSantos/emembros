@@ -22,7 +22,7 @@ import { TooltipModule } from 'primeng/tooltip';
 })
 export class Dashboard {
     sidebarVisible: boolean = false;
-    activeDropdown: string | null = null;
+    activeDropdowns: Set<string> = new Set();
     
     // Menu items para o mobile
     mobileMenuItems = [
@@ -96,25 +96,20 @@ export class Dashboard {
 
     toggleDropdown(dropdownName: string, event: Event): void {
         event.stopPropagation();
-        if (this.activeDropdown === dropdownName) {
-            this.activeDropdown = null;
+
+        if (this.activeDropdowns.has(dropdownName)) {
+            this.activeDropdowns.delete(dropdownName);
         } else {
-            this.activeDropdown = dropdownName;
+            this.activeDropdowns.add(dropdownName);
         }
     }
 
     closeAllDropdowns(): void {
-        this.activeDropdown = null;
+        this.activeDropdowns.clear();
     }
 
     openMobileMenu(): void {
-        console.log('Abrindo menu mobile, estado atual:', this.sidebarVisible);
-        // Força a abertura do drawer
         this.sidebarVisible = true;
-        // Força a detecção de mudanças se necessário
-        setTimeout(() => {
-            console.log('Menu aberto:', this.sidebarVisible);
-        }, 0);
     }
 
     closeMobileMenu(): void {

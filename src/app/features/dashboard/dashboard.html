@@ -1,29 +1,28 @@
-<!-- Topbar -->
-<header class="topbar">
-    <!-- MENU SANDUÍCHE - SEMPRE À ESQUERDA -->
+<header class="topbar shadow-sm">
     <button class="mobile-menu-btn" (click)="openMobileMenu()">
         <i class="pi pi-bars"></i>
     </button>
 
-    <!-- LOGO -->
     <div class="logo">
         <img src="imagens/logo/logo-emembros.png" alt="eMembros" />
     </div>
 
-    <!-- MENU DESKTOP -->
     <nav class="menu-desktop">
         <a class="menu-item" [class.active]="true" routerLink="/dashboard" (click)="closeAllDropdowns()">
             <i class="pi pi-home"></i>
             <span>Visão geral</span>
         </a>
 
-        <div class="dropdown" (mouseenter)="activeDropdown = 'pessoas'" (mouseleave)="activeDropdown = null">
-            <div class="menu-item" [class.active]="activeDropdown === 'pessoas'">
+        <div class="dropdown" 
+            (mouseenter)="activeDropdowns.add('pessoas')"
+            (mouseleave)="activeDropdowns.delete('pessoas')">
+            <div class="menu-item" 
+                [class.active]="activeDropdowns.has('pessoas')">
                 <i class="pi pi-users"></i>
                 <span>Pessoas</span>
                 <i class="pi pi-angle-down"></i>
             </div>
-            <div class="dropdown-menu" [class.show]="activeDropdown === 'pessoas'">
+            <div class="dropdown-menu" [class.show]="activeDropdowns.has('pessoas')">
                 <a (click)="closeAllDropdowns()">Ver todos</a>
                 <a (click)="closeAllDropdowns()">Adicionar pessoa</a>
                 <a (click)="closeAllDropdowns()">Campos adicionais</a>
@@ -89,46 +88,40 @@
 </header>
 
 <!-- Mobile Drawer usando PrimeNG Drawer (v19+) -->
-<p-drawer 
-    [(visible)]="sidebarVisible" 
-    [position]="'left'"
-    [modal]="true"
-    [dismissible]="true"
-    [closeOnEscape]="true"
-    [showCloseIcon]="true"
-    styleClass="mobile-drawer">
-    
+<p-drawer [(visible)]="sidebarVisible" [position]="'left'" [modal]="true" [dismissible]="true" [closeOnEscape]="true"
+    [showCloseIcon]="true" styleClass="mobile-drawer">
+
     <div class="mobile-menu-content">
         <div class="mobile-logo">
             <img src="imagens/logo/logo-emembros.png" alt="eMembros" />
         </div>
-        
+
         <div class="mobile-menu-items">
             @for (item of mobileMenuItems; track item.label) {
-                @if (item.items) {
-                    <div class="mobile-dropdown">
-                        <div class="mobile-dropdown-header" (click)="toggleDropdown(item.label, $event)">
-                            <div class="mobile-dropdown-title">
-                                <i [class]="item.icon"></i>
-                                <span>{{ item.label }}</span>
-                            </div>
-                            <i class="pi pi-angle-down" [class.rotated]="activeDropdown === item.label"></i>
-                        </div>
-                        <div class="mobile-dropdown-menu" [class.show]="activeDropdown === item.label">
-                            @for (subItem of item.items; track subItem.label) {
-                                <a (click)="closeMobileMenu()">
-                                    <i [class]="subItem.icon"></i>
-                                    <span>{{ subItem.label }}</span>
-                                </a>
-                            }
-                        </div>
-                    </div>
-                } @else {
-                    <a class="mobile-menu-link" [routerLink]="item.routerLink" (click)="closeMobileMenu()">
+            @if (item.items) {
+            <div class="mobile-dropdown">
+                <div class="mobile-dropdown-header" (click)="toggleDropdown(item.label, $event)">
+                    <div class="mobile-dropdown-title">
                         <i [class]="item.icon"></i>
                         <span>{{ item.label }}</span>
+                    </div>
+                    <i class="pi pi-angle-down" [class.rotated]="activeDropdowns.has(item.label)"></i>
+                </div>
+                <div class="mobile-dropdown-menu" [class.show]="activeDropdowns.has(item.label)">
+                    @for (subItem of item.items; track subItem.label) {
+                    <a (click)="closeMobileMenu()">
+                        <i [class]="subItem.icon"></i>
+                        <span>{{ subItem.label }}</span>
                     </a>
-                }
+                    }
+                </div>
+            </div>
+            } @else {
+            <a class="mobile-menu-link" [routerLink]="item.routerLink" (click)="closeMobileMenu()">
+                <i [class]="item.icon"></i>
+                <span>{{ item.label }}</span>
+            </a>
+            }
             }
         </div>
     </div>

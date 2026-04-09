@@ -14,20 +14,6 @@
     z-index: 100;
 }
 
-/* Botão Menu Sanduíche - SEMPRE VISÍVEL */
-.mobile-menu-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 8px;
-    border-radius: 8px;
-    transition: background 0.2s ease;
-    flex-shrink: 0;
-}
-
 .mobile-menu-btn i {
     font-size: 22px;
     color: #6b7280;
@@ -49,14 +35,6 @@
 .logo img {
     height: 32px;
     width: auto;
-}
-
-/* Menu Desktop */
-.menu-desktop {
-    display: flex;
-    align-items: center;
-    gap: 18px;
-    flex: 1;
 }
 
 /* Menu Item */
@@ -311,23 +289,28 @@
     margin: 0 auto;
 }
 
-/* Desktop: Botão sanduíche visível, mas menu desktop também */
-@media (min-width: 1025px) {
-    /* Botão sanduíche fica visível sempre */
+/* padrão: escondido */
+.mobile-menu-btn {
+    display: none;
+}
+
+/* mobile/tablet: aparece */
+@media (max-width: 1024px) {
     .mobile-menu-btn {
-        display: flex;
-    }
-    
-    /* Menu desktop continua normalmente */
-    .menu-desktop {
         display: flex;
     }
 }
 
-/* Tablet e Mobile: Menu desktop escondido */
-@media (max-width: 1024px) {
+.menu-desktop {
+    display: none;
+}
+
+@media (min-width: 1024px) {
     .menu-desktop {
-        display: none;
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        flex: 1;
     }
 }
 
